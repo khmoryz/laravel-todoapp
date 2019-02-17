@@ -15,7 +15,8 @@
         </form>
         <ol>
         @foreach ($todos as $todo)
-            <li>{{ $todo->item }}</li>
+            <li>{{ $todo->item }}
+            <input value="delete" onclick="location.href='todo/delete?id={{ $todo->id }}'"></li>
         @endforeach
         </ol>
     </body>

@@ -13,11 +13,18 @@ class ToDoController extends Controller
         return view('index', ['todos' => $todos]);
     }
 
-    public function post(Request $request){
+    public function create(Request $request)
+    {
+        $todo = new ToDo;
         $item = $request->item;
-        $data = [
-            'msg' =>'こんにちは' . $msg . 'さん！',
-        ];
-        return view('index', $data);
+        $todo->item = $item;
+        $todo->save();
+    }
+
+    public function delete(Request $request)
+    {
+        $todo = new ToDo;
+        $todo->find($request->id)->delete();
+        return redirect('/todo');
     }
 }
