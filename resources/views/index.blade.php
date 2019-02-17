@@ -8,14 +8,14 @@
     <body>
         <h1>laravel-todoapp</h1>
         <p>タスクを入力して下さい</p>
-        <form method="POST" action="/hello">
+        <form method="POST" action="/todo">
             {{ csrf_field() }}
-            <input type="text" name="msg">
+            <input type="text" name="item">
             <input type="submit">
         </form>
         <ol>
         @foreach ($todos as $todo)
-            <li>{{ $todo }}</li>
+            <li>{{ $todo->item }}</li>
         @endforeach
         </ol>
     </body>

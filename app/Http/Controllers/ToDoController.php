@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ToDo;
 
 class ToDoController extends Controller
 {
     public function index()
     {
-        $todos = ['ショッピング', 'お昼ご飯', '散歩'];
+        $todos = ToDo::all();
         return view('index', ['todos' => $todos]);
     }
 
     public function post(Request $request){
-        $msg = $request->msg;
+        $item = $request->item;
         $data = [
             'msg' =>'こんにちは' . $msg . 'さん！',
         ];
