@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ToDo;
+use Illuminate\Support\Facades\Auth;
 
 class ToDoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $todos = ToDo::all();
-        return view('index', ['todos' => $todos]);
+        // 認証周り
+        $user = Auth::user();
+        $todos = ToDo::All();
+        $param = ['todos' => $todos, 'user' => $user];
+
+        return view('index', ['param' => $param]);
     }
 
     public function create(Request $request)
